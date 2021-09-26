@@ -8,6 +8,67 @@ html_document:
 ---
 
 
+
+```{r materials, echo=FALSE, results='asis'}
+
+library(glue)
+pdf_item <- function(f='whatever.pdf', folder = 'materiaux'){
+  
+  baseurl <- 'https://idees.eric.auguie.eu/extension/'
+  
+  glue('<a href="{baseurl}/{folder}/{f}">{folder}/{f}</a> <br/>')
+}
+
+start <- '
+<div id="container">
+<header>
+  <h1>Materiaux</h1>
+</header>
+'
+
+end <- ' 
+</div>
+'    
+
+library(purrr)
+
+lf <- list.files(path = 'assets/materiaux/', include.dirs = FALSE)
+lf <- lf[!grepl('readme.txt', lf)]
+all_items <- purrr::map_chr(lf, pdf_item)
+
+cat(start)
+cat(all_items, sep = '\n')
+cat(end)
+```
+
+
+```{r declaration, echo=FALSE, results='asis'}
+
+start <- '
+<div id="container">
+<header>
+  <h1>Declaration originale</h1>
+</header>
+'
+
+end <- ' 
+</div>
+'    
+
+library(purrr)
+
+lf <- list.files(path = 'assets/declaration originale/', include.dirs = FALSE)
+lf <- lf[!grepl('readme.txt', lf)]
+all_items <- purrr::map_chr(lf, pdf_item, folder='declaration originale')
+
+cat(start)
+cat(all_items, sep = '\n')
+cat(end)
+```
+
+
+
+
 ```{r items, echo=FALSE}
 lf <- list.files(path = 'assets/photos 2013/', include.dirs = FALSE)
 ```
@@ -17,9 +78,10 @@ lf <- list.files(path = 'assets/photos 2013/', include.dirs = FALSE)
 library(glue)
 photo_item <- function(f='IMG_20130812_213252.jpg'){
   
-  baseurl <- 'https://idees.eric.auguie.eu/extension/photos 2013/'
+  # baseurl <- 'https://idees.eric.auguie.eu/extension/photos 2013/'
+  baseurl <- 'http://vigne-extension.imgix.net/photos 2013/'
   
-  glue('<li data-src="{baseurl}{f}" data-sub-html="" data-download-url="{baseurl}{f}" data-filename="{baseurl}{f}"><a href="{baseurl}{f}"><img src="{baseurl}{f}" alt="{f}" width="120" height="120"></a></li>')
+  glue('<li data-src="{baseurl}{f}" data-sub-html="" data-download-url="{baseurl}{f}" data-filename="{baseurl}{f}"><a href="{baseurl}{f}"><img src="{baseurl}{f}?w=120&h=120" alt="{f}" width="120" height="120"></a></li>')
 }
 
 ```
@@ -28,7 +90,7 @@ photo_item <- function(f='IMG_20130812_213252.jpg'){
 start <- '
 <div id="container">
 <header>
-  <h1><a href="https://baptiste.github.io/extension/index.html">Extension</a></h1>
+  <h1>Photos</h1>
 </header>
 
 <ul id="media" class="clearfix">
