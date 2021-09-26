@@ -57,7 +57,7 @@ end <- '
 
 library(purrr)
 
-lf <- list.files(path = 'assets/declaration originale/', include.dirs = FALSE)
+lf <- list.files(path = 'assets/declaration originale', include.dirs = FALSE)
 lf <- lf[!grepl('readme.txt', lf)]
 all_items <- purrr::map_chr(lf, pdf_item, folder='declaration originale')
 
