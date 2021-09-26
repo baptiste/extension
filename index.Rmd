@@ -19,18 +19,34 @@ cat(vue)
 ```
 
 ```{r fun_item, echo=FALSE}
+unicode_to_html_entities <- function(char) {
+  char <- gsub('é','&eacute;',char)
+  # codes <- utf8ToInt(char)
+  # return(paste0(purrr::map_chr(codes, encode_as_htmlentity), collapse = ''))
+  return(char)
+}
+
+encode_as_htmlentity <- function(char_code) {
+  if(char_code < 128) {
+    return(intToUtf8(char_code))
+  } else {
+    return(paste0("&#",char_code,";"))
+  }
+}
 
 library(glue)
-photo_item <- function(f='IMG_20130812_213252.jpg', folder='photos 2013'){
+photo_item <- function(f='IMG_20130812_213252.jpg', folder='photos 2013', baseurl='https://baptiste.github.io/extension/assets'){
   
+  f <- gsub('é','&eacute;', f)
   # baseurl <- 'https://idees.eric.auguie.eu/extension/photos 2013/'
   baseurl <- 'http://vigne-extension.imgix.net'
   
   glue('<li data-src="{baseurl}/{folder}/{f}?q=80" data-sub-html="" data-download-url="{baseurl}/{folder}/{f}?q=80" data-filename="{baseurl}/{folder}/{f}?q=80"><a href="{baseurl}/{folder}/{f}"><img src="{baseurl}/{folder}/{f}?w=120&h=120" alt="{f}" width="120" height="120"></a></li>')
 }
 
-pdf_item <- function(f='whatever.pdf', folder = 'materiaux'){
+pdf_item <- function(f='whatever.pdf', folder = 'materiaux', baseurl='https://baptiste.github.io/extension/assets'){
   
+  f <- gsub('é','&eacute;', f)
   baseurl <- 'https://idees.eric.auguie.eu/extension'
   
   glue('<a href="{baseurl}/{folder}/{f}">{folder}/{f}</a> <br/>')
