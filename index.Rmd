@@ -16,7 +16,7 @@ pdf_item <- function(f='whatever.pdf', folder = 'materiaux'){
   
   baseurl <- 'https://idees.eric.auguie.eu/extension/'
   
-  glue('<a href="{baseurl}/{folder}/{f}">{folder}/{f}</a> <br/>')
+  glue('<a href="{baseurl}{folder}/{f}">{folder}/{f}</a> <br/>')
 }
 
 start <- '
