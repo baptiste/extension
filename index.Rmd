@@ -19,25 +19,11 @@ cat(vue)
 ```
 
 ```{r fun_item, echo=FALSE}
-unicode_to_html_entities <- function(char) {
-  char <- gsub('é','&eacute;',char)
-  # codes <- utf8ToInt(char)
-  # return(paste0(purrr::map_chr(codes, encode_as_htmlentity), collapse = ''))
-  return(char)
-}
-
-encode_as_htmlentity <- function(char_code) {
-  if(char_code < 128) {
-    return(intToUtf8(char_code))
-  } else {
-    return(paste0("&#",char_code,";"))
-  }
-}
 
 library(glue)
 photo_item <- function(f='IMG_20130812_213252.jpg', folder='photos 2013', baseurl='https://baptiste.github.io/extension/assets'){
   
-  f <- gsub('é','&eacute;', f)
+  # f <- gsub('é','&eacute;', f)
   # baseurl <- 'https://idees.eric.auguie.eu/extension/photos 2013/'
   baseurl <- 'http://vigne-extension.imgix.net'
   
@@ -46,7 +32,7 @@ photo_item <- function(f='IMG_20130812_213252.jpg', folder='photos 2013', baseur
 
 pdf_item <- function(f='whatever.pdf', folder = 'materiaux', baseurl='https://baptiste.github.io/extension/assets'){
   
-  f <- gsub('é','&eacute;', f)
+  # f <- gsub('é','&eacute;', f)
   baseurl <- 'https://idees.eric.auguie.eu/extension'
   
   glue('<a href="{baseurl}/{folder}/{f}">{folder}/{f}</a> <br/>')
