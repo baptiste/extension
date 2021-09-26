@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid {
+        padding-top: 56.25%
+      }
+    </style>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, user-scalable=no">
+      <title>Photos - Home</title>
+      <link rel="stylesheet" href="./css/lightgallery.css">
+      <link rel="stylesheet" href="./css/video-js.css">
+      <link rel="stylesheet" href="./css/lg-exif.css">
+      <link rel="stylesheet" href="./css/core.css">
+      <link rel="stylesheet" href="./css/theme.css">
+  </head>
+
+  <body class="">
+
+    
+    <div id="container">
+    
+      <!--
+        Gallery title
+      -->
+      <header>
+        <h1><a href="https://baptiste.github.io/extension/index.html">Extension</a></h1>
+      </header>
+    
+      <!--
+        Breadcrumbs of parent albums
+      -->
+      <nav class="breadcrumbs">
+    <a class="breadcrumb-item" href="https://baptiste.github.io/extension/index.html">Fichiers et photos</a>
+      </nav>
+    
+      <!--
+        Nested albums, if any
+      -->
+      <div id="albums">
+      </div>
+    
+      <!--
+        All photos and videos
+      -->
+      <ul id="media" class="clearfix">
+          
+            <li data-src="media/large/IMG_20130812_213252.jpg" data-sub-html="" data-download-url="media/original/IMG_20130812_213252.jpg" data-filename="IMG_20130812_213252.jpg">
+              <a href="https://baptiste.github.io/extension/media/original/IMG_20130812_213252.jpg">
+                <img src="./assets/IMG_20130812_213252.jpg" alt="IMG_20130812_213252.jpg" width="120" height="120">
+              </a>
+            </li>      
+            <li data-src="media/large/IMG_20131127_204456.jpg" data-sub-html="" data-download-url="media/original/IMG_20131127_204456.jpg" data-filename="IMG_20131127_204456.jpg">
+              <a href="https://baptiste.github.io/extension/media/original/IMG_20131127_204456.jpg">
+                <img src="./assets/IMG_20131127_204456.jpg" alt="IMG_20131127_204456.jpg" width="120" height="120">
+              </a>
+            </li>      
+            <li data-src="media/large/IMG_20131127_204506.jpg" data-sub-html="" data-download-url="media/original/IMG_20131127_204506.jpg" data-filename="IMG_20131127_204506.jpg">
+              <a href="https://baptiste.github.io/extension/media/original/IMG_20131127_204506.jpg">
+                <img src="./assets/IMG_20131127_204506.jpg" alt="IMG_20131127_204506.jpg" width="120" height="120">
+              </a>
+            </li>      
+            <li data-src="media/large/IMG_20131215_173937.jpg" data-sub-html="" data-download-url="media/original/IMG_20131215_173937.jpg" data-filename="IMG_20131215_173937.jpg">
+              <a href="https://baptiste.github.io/extension/media/original/IMG_20131215_173937.jpg">
+                <img src="./assets/IMG_20131215_173937.jpg" alt="IMG_20131215_173937.jpg" width="120" height="120">
+              </a>
+            </li>  </ul>
+    
+      <!--
+        Pagination
+      -->
+    
+      <!--
+        Zip file link
+      -->
+    
+    
+      <!--
+        Optional footer
+      -->
+      <footer>
+        <p>copyright ba 2021</p>
+      </footer>
+    
+    </div>
+    <!-- Video loader -->
+    <div id="videos">
+    </div>
+
+    <!-- jQuery -->
+    <script src="./js/jquery.js"></script>
+    <!-- VideoJS -->
+    <script src="./js/video.js"></script>
+    <!-- LightGallery -->
+    <script src="./js/lightgallery.js"></script>
+    <script src="./js/lg-autoplay.js"></script>
+    <script src="./js/lg-pager.js"></script>
+    <script src="./js/lg-thumbnail.js"></script>
+    <script src="./js/lg-video.js"></script>
+    <script src="./js/lg-exif.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        $("#media").lightGallery({
+          thumbWidth: 80,
+          controls: true,
+          loop : false,
+          download: true,
+          counter: true,
+          videojs: true
+        });
+      });
+    </script>
+
+
+  
+
+
+</body></html>
