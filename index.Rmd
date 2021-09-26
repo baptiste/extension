@@ -1,0 +1,90 @@
+---
+author: baptiste
+title: who cares
+html_document:
+    template: _tpl.html
+    self_contained: false
+    theme: null
+---
+
+
+```{r items, echo=FALSE}
+lf <- list.files(path = 'assets/photos 2013/', include.dirs = FALSE)
+```
+
+
+```{r photo_item, echo=FALSE}
+library(glue)
+photo_item <- function(f='IMG_20130812_213252.jpg'){
+  
+  baseurl <- 'https://idees.eric.auguie.eu/extension/photos 2013/'
+  
+  glue('<li data-src="{baseurl}{f}" data-sub-html="" data-download-url="{baseurl}{f}" data-filename="{baseurl}{f}"><a href="{baseurl}{f}"><img src="{baseurl}{f}" alt="{f}" width="120" height="120"></a></li>')
+}
+
+```
+
+```{r container, echo=FALSE, results='asis'}
+start <- '
+<div id="container">
+<header>
+  <h1><a href="https://baptiste.github.io/extension/index.html">Extension</a></h1>
+</header>
+
+<ul id="media" class="clearfix">
+ '         
+
+library(purrr)
+
+all_items <- purrr::map_chr(lf, photo_item)
+
+end <- ' 
+</ul>
+'    
+
+cat(start)
+cat(all_items, sep = '\n')
+cat(end)
+
+```
+
+
+```{r footer, echo=FALSE, results='asis'}
+
+cat('
+<footer>
+  <p>copyright ba 2021</p>
+</footer>
+
+</div>
+<!-- Video loader -->
+<div id="videos">
+</div>
+
+<!-- jQuery -->
+<script src="./js/jquery.js"></script>
+<!-- VideoJS -->
+<script src="./js/video.js"></script>
+<!-- LightGallery -->
+<script src="./js/lightgallery.js"></script>
+<script src="./js/lg-autoplay.js"></script>
+<script src="./js/lg-pager.js"></script>
+<script src="./js/lg-thumbnail.js"></script>
+<script src="./js/lg-video.js"></script>
+<script src="./js/lg-exif.js"></script>
+
+<script>
+  $(document).ready(function() {
+    $("#media").lightGallery({
+      thumbWidth: 80,
+      controls: true,
+      loop : false,
+      download: true,
+      counter: true,
+      videojs: true
+    });
+  });
+</script>
+')
+```
+    

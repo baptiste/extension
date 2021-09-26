@@ -1,0 +1,4 @@
+html_document:
+    template: _tpl.html
+    self_contained: false
+    theme: null
