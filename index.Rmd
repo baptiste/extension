@@ -18,16 +18,27 @@ vue <- '
 cat(vue)
 ```
 
-
-```{r materials, echo=FALSE, results='asis'}
+```{r fun_item, echo=FALSE}
 
 library(glue)
+photo_item <- function(f='IMG_20130812_213252.jpg', folder='photos 2013'){
+  
+  # baseurl <- 'https://idees.eric.auguie.eu/extension/photos 2013/'
+  baseurl <- 'http://vigne-extension.imgix.net'
+  
+  glue('<li data-src="{baseurl}/{folder}/{f}?q=80" data-sub-html="" data-download-url="{baseurl}/{folder}/{f}?q=80" data-filename="{baseurl}/{folder}/{f}?q=80"><a href="{baseurl}/{folder}/{f}"><img src="{baseurl}/{folder}/{f}?w=120&h=120" alt="{f}" width="120" height="120"></a></li>')
+}
+
 pdf_item <- function(f='whatever.pdf', folder = 'materiaux'){
   
-  baseurl <- 'https://idees.eric.auguie.eu/extension/'
+  baseurl <- 'https://idees.eric.auguie.eu/extension'
   
-  glue('<a href="{baseurl}{folder}/{f}">{folder}/{f}</a> <br/>')
+  glue('<a href="{baseurl}/{folder}/{f}">{folder}/{f}</a> <br/>')
 }
+
+```
+
+```{r materials, echo=FALSE, results='asis'}
 
 start <- '
 <div id="container">
@@ -69,10 +80,18 @@ library(purrr)
 
 lf <- list.files(path = 'assets/declaration originale', include.dirs = FALSE)
 lf <- lf[!grepl('readme.txt', lf)]
-all_items <- purrr::map_chr(lf, pdf_item, folder='declaration originale')
+lf_img <- lf[grepl('\\.png|\\.jpg|\\.jpeg', lf)]
+lf_pdf <- lf[!grepl('\\.png|\\.jpg|\\.jpeg', lf)]
 
 cat(start)
-cat(all_items, sep = '\n')
+if(length(lf_img)){
+  img_items <- purrr::map_chr(lf_img, photo_item, folder='declaration originale')
+  cat('<ul id="media" class="clearfix">\n')   
+  cat(img_items, sep = '\n')
+  cat(' </ul>\n')   
+}
+doc_items <- purrr::map_chr(lf_pdf, pdf_item, folder='declaration originale')
+cat(doc_items, sep = '\n')
 cat(end)
 ```
 
@@ -84,17 +103,6 @@ lf <- list.files(path = 'assets/photos 2013/', include.dirs = FALSE)
 ```
 
 
-```{r photo_item, echo=FALSE}
-library(glue)
-photo_item <- function(f='IMG_20130812_213252.jpg'){
-  
-  # baseurl <- 'https://idees.eric.auguie.eu/extension/photos 2013/'
-  baseurl <- 'http://vigne-extension.imgix.net/photos 2013/'
-  
-  glue('<li data-src="{baseurl}{f}" data-sub-html="" data-download-url="{baseurl}{f}" data-filename="{baseurl}{f}"><a href="{baseurl}{f}"><img src="{baseurl}{f}?w=120&h=120" alt="{f}" width="120" height="120"></a></li>')
-}
-
-```
 
 ```{r container, echo=FALSE, results='asis'}
 start <- '
