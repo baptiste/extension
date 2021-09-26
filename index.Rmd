@@ -7,6 +7,16 @@ html_document:
     theme: null
 ---
 
+```{r vue, echo=FALSE, results='asis'}
+
+vue <- '
+<div id="container">
+<img src="https://idees.eric.auguie.eu/extension/assets/vue.png" alt="vue" width="800">
+</div>
+'
+
+cat(vue)
+```
 
 
 ```{r materials, echo=FALSE, results='asis'}
