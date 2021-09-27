@@ -41,7 +41,7 @@ Materiaux
 Declaration originale
 </h1>
 </header>
-<ul id="media" class="clearfix">
+<ul id="media1" class="clearfix">
 <li data-src="http://vigne-extension.imgix.net/declaration originale/DP1.png?q=80" data-sub-html data-download-url="http://vigne-extension.imgix.net/declaration originale/DP1.png?q=80" data-filename="http://vigne-extension.imgix.net/declaration originale/DP1.png?q=80">
 <a href="http://vigne-extension.imgix.net/declaration originale/DP1.png"><img src="http://vigne-extension.imgix.net/declaration originale/DP1.png?w=120&h=120" alt="DP1.png" width="120" height="120"></a>
 </li>
@@ -78,7 +78,7 @@ Declaration originale
 Photos
 </h1>
 </header>
-<ul id="media" class="clearfix">
+<ul id="media2" class="clearfix">
 <li data-src="http://vigne-extension.imgix.net/photos 2013/20130911_150539.jpg?q=80" data-sub-html data-download-url="http://vigne-extension.imgix.net/photos 2013/20130911_150539.jpg?q=80" data-filename="http://vigne-extension.imgix.net/photos 2013/20130911_150539.jpg?q=80">
 <a href="http://vigne-extension.imgix.net/photos 2013/20130911_150539.jpg"><img src="http://vigne-extension.imgix.net/photos 2013/20130911_150539.jpg?w=120&h=120" alt="20130911_150539.jpg" width="120" height="120"></a>
 </li>
@@ -307,7 +307,7 @@ Photos
 </ul>
 <footer>
 <p>
-copyright ba 2021
+copyright b.a. 2021
 </p>
 </footer>
 </div>
@@ -328,7 +328,16 @@ copyright ba 2021
 <script src="./js/lg-exif.js"></script>
 <script>
   $(document).ready(function() {
-    $("#media").lightGallery({
+    $("#media1").lightGallery({
+      thumbWidth: 80,
+      controls: true,
+      loop : false,
+      download: true,
+      counter: true,
+      videojs: true
+    });
+    
+    $("#media2").lightGallery({
       thumbWidth: 80,
       controls: true,
       loop : false,

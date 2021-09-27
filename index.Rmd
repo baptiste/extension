@@ -88,7 +88,7 @@ lf_pdf <- lf[!grepl('\\.png|\\.jpg|\\.jpeg', lf)]
 cat(start)
 if(length(lf_img)){
   img_items <- purrr::map_chr(lf_img, photo_item, folder='declaration originale')
-  cat('<ul id="media" class="clearfix">\n')   
+  cat('<ul id="media1" class="clearfix">\n')   
   cat(img_items, sep = '\n')
   cat(' </ul>\n')   
 }
@@ -113,7 +113,7 @@ start <- '
   <h1>Photos</h1>
 </header>
 
-<ul id="media" class="clearfix">
+<ul id="media2" class="clearfix">
  '         
 
 library(purrr)
@@ -135,7 +135,7 @@ cat(end)
 
 cat('
 <footer>
-  <p>copyright ba 2021</p>
+  <p>copyright b.a. 2021</p>
 </footer>
 
 </div>
@@ -157,7 +157,16 @@ cat('
 
 <script>
   $(document).ready(function() {
-    $("#media").lightGallery({
+    $("#media1").lightGallery({
+      thumbWidth: 80,
+      controls: true,
+      loop : false,
+      download: true,
+      counter: true,
+      videojs: true
+    });
+    
+    $("#media2").lightGallery({
       thumbWidth: 80,
       controls: true,
       loop : false,
