@@ -45,7 +45,7 @@ pdf_item <- function(f='whatever.pdf', folder = 'materiaux', baseurl='https://ba
 start <- '
 <div id="container">
 <header>
-  <h1>Materiaux</h1>
+  <h2>Materiaux</h2>
 </header>
 '
 
@@ -70,7 +70,7 @@ cat(end)
 start <- '
 <div id="container">
 <header>
-  <h1>Declaration originale</h1>
+  <h2>Declaration originale</h2>
 </header>
 '
 
@@ -110,7 +110,7 @@ lf <- list.files(path = 'assets/photos 2013/', include.dirs = FALSE)
 start <- '
 <div id="container">
 <header>
-  <h1>Photos</h1>
+  <h2>Photos</h2>
 </header>
 
 <ul id="media2" class="clearfix">
