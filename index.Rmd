@@ -27,7 +27,7 @@ photo_item <- function(f='IMG_20130812_213252.jpg', folder='photos 2013', baseur
   # baseurl <- 'https://idees.eric.auguie.eu/extension/photos 2013/'
   baseurl <- 'http://vigne-extension.imgix.net'
   
-  glue('<li data-src="{baseurl}/{folder}/{f}?q=80" data-sub-html="" data-download-url="{baseurl}/{folder}/{f}?q=80" data-filename="{baseurl}/{folder}/{f}?q=80"><a href="{baseurl}/{folder}/{f}"><img src="{baseurl}/{folder}/{f}?w=120&h=120" alt="{f}" width="120" height="120"></a></li>')
+  glue('<li data-src="{baseurl}/{folder}/{f}?q=80" data-sub-html="" data-download-url="{baseurl}/{folder}/{f}?q=100" data-filename="{baseurl}/{folder}/{f}?q=80"><a href="{baseurl}/{folder}/{f}?q=80"><img src="{baseurl}/{folder}/{f}?w=120&h=120" alt="{f}" width="120" height="120"></a></li>')
 }
 
 pdf_item <- function(f='whatever.pdf', folder = 'materiaux', baseurl='https://baptiste.github.io/extension/assets'){
