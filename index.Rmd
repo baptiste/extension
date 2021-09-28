@@ -55,12 +55,20 @@ end <- '
 
 library(purrr)
 
-lf <- list.files(path = 'assets/materiaux/', include.dirs = FALSE)
+lf <- list.files(path = 'assets/materiaux/',  include.dirs = TRUE, recursive = TRUE)
 lf <- lf[!grepl('readme.txt', lf)]
-all_items <- purrr::map_chr(lf, pdf_item)
+lf_img <- lf[grepl('\\.png|\\.jpg|\\.jpeg', lf)]
+lf_pdf <- lf[!grepl('\\.png|\\.jpg|\\.jpeg', lf)]
 
 cat(start)
-cat(all_items, sep = '\n')
+if(length(lf_img)){
+  img_items <- purrr::map_chr(lf_img, photo_item, folder='materiaux')
+  cat('<ul id="media3" class="clearfix">\n')   
+  cat(img_items, sep = '\n')
+  cat(' </ul>\n')   
+}
+doc_items <- purrr::map_chr(lf_pdf, pdf_item, folder='materiaux')
+cat(doc_items, sep = '\n')
 cat(end)
 ```
 
@@ -135,24 +143,18 @@ cat(end)
 
 cat('
 <footer>
-  <p>copyright b.a. 2021</p>
+  <p>ba 2021</p>
 </footer>
 
-</div>
-<!-- Video loader -->
-<div id="videos">
 </div>
 
 <!-- jQuery -->
 <script src="./js/jquery.js"></script>
-<!-- VideoJS -->
-<script src="./js/video.js"></script>
 <!-- LightGallery -->
 <script src="./js/lightgallery.js"></script>
 <script src="./js/lg-autoplay.js"></script>
 <script src="./js/lg-pager.js"></script>
 <script src="./js/lg-thumbnail.js"></script>
-<script src="./js/lg-video.js"></script>
 <script src="./js/lg-exif.js"></script>
 
 <script>
@@ -167,6 +169,15 @@ cat('
     });
     
     $("#media2").lightGallery({
+      thumbWidth: 80,
+      controls: true,
+      loop : false,
+      download: true,
+      counter: true,
+      videojs: true
+    });
+    
+    $("#media3").lightGallery({
       thumbWidth: 80,
       controls: true,
       loop : false,
